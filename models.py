@@ -77,3 +77,14 @@ def group_msg(label,text):
     for i in temp:
         update_msg(i[0],text)
  
+def id_in_group(label):
+    conn = sqlite3.connect("test1.db")
+    c = conn.cursor()
+    msg = []
+    for i in label:
+        msg.append(f"'{i}'")
+    msg2 = ",".join(msg)
+    c.execute("SELECT DISTINCT ID FROM ID_LABEL WHERE LABEL IN (%s)" % msg2)
+    temp = c.fetchall()
+    conn.close()
+    return temp
