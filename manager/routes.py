@@ -50,7 +50,7 @@ def submit2():
 @manager.route("/PrivateMessage", methods=["POST", "GET"])
 def submit3():
     user_id = request.form['nm']
-    text = request.form['text']
-    update_msg(user_id,text)
-    line_bot_api.push_message('%s', TextSendMessage(text='Hello World!') % (user_id))
+    user_text = request.form['text']
+    update_msg(user_id,user_text)
+    line_bot_api.push_message(user_id, TextSendMessage(text=user_text))
     return render_template("manager.html",user_info= user_info())
