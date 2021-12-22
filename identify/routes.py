@@ -17,7 +17,7 @@ def login():
     data = {
         "grant_type": "authorization_code",
         "code": code,
-        "redirect_uri": "https://linebotlawrence.herokuapp.com//1",
+        "redirect_uri": "https://linebotlawrence.herokuapp.com/1",
         "client_id": 1656730482,
         "client_secret": "d4e1b8138b743cd8de627d592b967f07",
     }
