@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Page</title>
+</head>
+<body>
+    <div>
+        <div>
+            你好
+        </div>
+        <div>
+            {% for segment in segment_details %}
+                <div class="col">
+                <p>{{ segment }}<p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

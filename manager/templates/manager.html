@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Lawerence.css">
+    <title>Lawerence</title>
+</head>
+
+<body>
+
+    <div class="contanier">
+        <form action="/manager/Grouping" method="post">
+            <div class="group">
+                <form method="post">
+                    <div class="list">
+                        <select name="nm">
+                            {% for user in user_info %}
+                            <option value="{{user[0]}}">{{ user[1]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="checkbox">
+                        <label>分類:</label>
+                        <label><input type="checkbox" name="student" value="student">學生族群</label>
+                        <label><input type="checkbox" name="worker" value="worker">上班族群</label>
+                        <label><input type="checkbox" name="cooker" value="cooker">家庭主婦</label>
+                    </div>
+                    <input type="submit" value="確定" onclick="">
+                </form>
+            </div>
+        </form>
+        <div class="GroupText">
+            <form action="/manager/GroupMail" method="post">
+                <div class="checkbox">
+                    <label>分類:</label>
+                    <label><input type="checkbox" name="student" value='student'>學生族群</label>
+                    <label><input type="checkbox" name="worker" value="worker">上班族群</label>
+                    <label><input type="checkbox" name="cooker" value="cooker">家庭主婦</label>
+                </div>
+                <div>
+                    <textarea class="Inputarea" name="text" cols="30" rows="10"></textarea>
+                </div>
+                <input type="submit" value="確定" onclick="">
+            </form>
+        </div>
+        <div class="PersonText">
+            <form action="/manager/PrivateMessage" method="post">
+                <div class="list">
+                    <select name="nm">
+                        {% for user in user_info %}
+                        <option value="{{user[0]}}">{{ user[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <textarea class="Inputarea" name="text" cols="30" rows="10"></textarea>
+                </div>
+                <input type="submit" value="確定" onclick="">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
