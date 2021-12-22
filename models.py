@@ -76,7 +76,10 @@ def group_msg(label,text):
     conn.close()
     for i in temp:
         update_msg(i[0],text)
- 
+    return temp
+
+
+
 def id_in_group(label):
     conn = sqlite3.connect("test1.db")
     c = conn.cursor()
@@ -88,3 +91,7 @@ def id_in_group(label):
     temp = c.fetchall()
     conn.close()
     return temp
+
+aaa = ['1','2','3','4']
+for i in aaa:
+    print(i)
