@@ -91,7 +91,3 @@ def id_in_group(label):
     temp = c.fetchall()
     conn.close()
     return temp
-
-aaa = ['1','2','3','4']
-for i in aaa:
-    print(i)
