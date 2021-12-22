@@ -42,6 +42,9 @@ def submit2():
     for i in request_list:
         if i != "text":
             group.append(i)
+    user_list = id_in_group(group)
+    for i in user_list:
+        line_bot_api.push_message(i, TextSendMessage(text=request.form["text"]))
     group_msg(group,request.form["text"])
     return render_template("manager.html",user_info= user_info())
 
