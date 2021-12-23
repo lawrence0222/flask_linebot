@@ -50,18 +50,26 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    user_ID = event.source.user_id
+    profile = line_bot_api.get_profile(user_ID)
+    insert(profile.user_id,profile.display_name,profile.picture_url)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
+
+
 
 @handler.add(FollowEvent)
 def handle_follow(event):
     user_ID = event.source.user_id
     profile = line_bot_api.get_profile(user_ID)
     insert(profile.user_id,profile.display_name,profile.picture_url)
-    print("in Follow")
+
+
+
 
                                 
 app.register_blueprint(identify)
 app.register_blueprint(usr)
 app.register_blueprint(manager)
+
