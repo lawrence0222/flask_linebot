@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, abort
 from identify.routes import identify
 from usr.routes import usr
 from manager.routes import manager
+from models import *
 
 
 app = Flask(__name__)
@@ -13,9 +14,9 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, events, FollowEvent
 )
-
+from linebot import LineBotApi
 
 @app.route('/')
 def index():
@@ -53,8 +54,14 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=event.message.text))
 
+@handler.add(FollowEvent)
+def handle_follow(event):
+    user_ID = event.source.user_id
+    profile = line_bot_api.get_profile(user_ID)
+    insert(profile.user_id,profile.display_name,profile.picture_url)
+    print("in Follow")
 
-
+                                
 app.register_blueprint(identify)
 app.register_blueprint(usr)
 app.register_blueprint(manager)
