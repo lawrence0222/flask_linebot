@@ -26,7 +26,7 @@ def login():
     json_1 = json.loads(response_1.text)
     data2 = {"id_token": json_1["id_token"], "client_id": 1656730482}
     response_2 = requests.post("https://api.line.me/oauth2/v2.1/verify", data=data2)
-    print(response_2.text)
+    #print(response_2.text)
     json_2 = json.loads(response_2.text)
     user_id = json_2["sub"]
     name = json_2["name"]
