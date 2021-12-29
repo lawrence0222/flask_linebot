@@ -9,6 +9,10 @@
         <div>
             哈囉
         </div>
+        
+            <!-- <img src="https://qr-official.line.me/sid/L/218zdunr.png"> -->
+            <img src= {{ url_for('static', filename = 'qrcode.png') }} width="16" height="16" alt="previous" title="Previous" border="0">
+        
         <div>
             {% for segment in segment_details %}
                 <div class="col">

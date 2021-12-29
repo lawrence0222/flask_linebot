@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, abort, url_for
 from identify.routes import identify
 from usr.routes import usr
 from manager.routes import manager
@@ -37,7 +37,8 @@ def callback():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
-
+    line_bot_api.delete_rich_menu()
+    
     # handle webhook body
     try:
         handler.handle(body, signature)
@@ -65,10 +66,18 @@ def handle_follow(event):
     profile = line_bot_api.get_profile(user_ID)
     insert(profile.user_id,profile.display_name,profile.picture_url)
 
+# rich_menu_to_create = RichMenu(
+#     size=RichMenuSize(width=2500, height=843),
+#     selected=False,
+#     name="Nice richmenu",
+#     chat_bar_text="Tap here",
+#     areas=[RichMenuArea(
+#         bounds=RichMenuBounds(x=0, y=0, width=2500, height=843),
+#         action=URIAction(label='Go to line.me', uri='https://line.me'))]
+# )
+# rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
+# print(rich_menu_id)
 
-
-
-                                
 app.register_blueprint(identify)
 app.register_blueprint(usr)
 app.register_blueprint(manager)

@@ -12,7 +12,7 @@
 <body>
 
     <div class="contanier">
-        <form action="/manager/Grouping" method="post">
+        <form action="/manager/" method="post">
             <div class="group">
                 <form method="post">
                     <div class="list">
@@ -33,7 +33,7 @@
             </div>
         </form>
         <div class="GroupText">
-            <form action="/manager/GroupMail" method="post">
+            <form action="/manager/" method="post">
                 <div class="checkbox">
                     <label>分類:</label>
                     <label><input type="checkbox" name="student" value='student'>學生族群</label>
@@ -47,7 +47,7 @@
             </form>
         </div>
         <div class="PersonText">
-            <form action="/manager/PrivateMessage" method="post">
+            <form action="/manager/" method="post">
                 <div class="list">
                     <select name="nm">
                         {% for user in user_info %}
@@ -61,6 +61,7 @@
                 <input type="submit" value="確定" onclick="">
             </form>
         </div>
+        <img src="image/qrcode.png" alt="qrcode">
     </div>
 </body>
 
