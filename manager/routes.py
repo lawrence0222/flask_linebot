@@ -20,6 +20,7 @@ line_bot_api = LineBotApi('lZjUhkDwED79lPFD/0k68acKfkoxtxkS4rdsmK3epf4XuiYaqojTL
 def index():
     return render_template("manager.html",user_info= user_info())
 
+@manager.route("/Grouping", methods=["POST", "GET"])
 def submit():
     request_list = list(request.form.keys())
     for j in request_list:
@@ -29,6 +30,8 @@ def submit():
             insert_label(user_id,j)
     return render_template("manager.html",user_info= user_info())
 
+
+@manager.route("/GroupMail", methods=["POST", "GET"])
 def submit2():
     request_list = list(request.form.keys())
     print(request_list)
@@ -41,7 +44,8 @@ def submit2():
         line_bot_api.push_message(i[0], TextSendMessage(text=request.form["text"]))
     group_msg(group,request.form["text"])
     return render_template("manager.html",user_info= user_info())
-    
+
+@manager.route("/PrivateMessage", methods=["POST", "GET"])
 def submit3():
     user_id = request.form['nm']
     user_text = request.form['text']
