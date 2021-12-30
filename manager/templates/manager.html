@@ -41,8 +41,8 @@
                     <label><input type="checkbox" name="cooker" value="cooker">家庭主婦</label>
                 </div>
                 <div>
-                    {% for i in range(11) %}
-                    {{ i }}
+                    {% for user in user_info %}
+                        {{ user[1] }}
                     {% endfor %}
                 </div>
                 <div>
