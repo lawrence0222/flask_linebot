@@ -41,8 +41,10 @@
                     <label><input type="checkbox" name="cooker" value="cooker">家庭主婦</label>
                 </div>
                 <div>
-                    {% for user in user_info %}
-                        {{ user[1] }}
+                    {% for user_id in user_list %}
+                        {% if user_id in user_info %}
+                        {{ user_info[1] }}
+                        {% endif %}
                     {% endfor %}
                 </div>
                 <div>
