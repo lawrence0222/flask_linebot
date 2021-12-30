@@ -1,4 +1,5 @@
 from re import S
+import re
 from flask import render_template, request, redirect, url_for
 import requests
 import json
@@ -44,8 +45,12 @@ def submit2():
         line_bot_api.push_message(i[0], TextSendMessage(text=request.form["text"]))
     group_msg(group,request.form["text"])
     return render_template("manager.html",user_info= user_info(),user_list = user_list)
-def onclick1():
-    return "hello"
+
+@manager.route("/GroupMail/iden", methods=["POST", "GET"])
+def iden():
+    request_list = list(request.form.values())
+    return request_list
+
 
 
 @manager.route("/PrivateMessage", methods=["POST", "GET"])
