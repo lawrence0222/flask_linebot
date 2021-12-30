@@ -48,7 +48,9 @@ def submit2():
 
 @manager.route("/GroupMail/iden", methods=["POST", "GET"])
 def iden():
-    return render_template("line_login.html")
+    if request.form.get('student'):
+    # do something
+        return render_template("line_login.html")
 
 
 
