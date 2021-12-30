@@ -49,6 +49,7 @@ def user_info():
     c.execute("SELECT USER_ID,USER_NAME FROM PEOPLE")
     #conn.commit()
     res = c.fetchall()
+    
     conn.close()
     return  res
 

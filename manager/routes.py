@@ -43,7 +43,7 @@ def submit2():
     for i in user_list:
         line_bot_api.push_message(i[0], TextSendMessage(text=request.form["text"]))
     group_msg(group,request.form["text"])
-    return render_template("manager.html",user_info= user_info())
+    return render_template("manager.html",user_info= user_info(),user_list = user_list)
 
 @manager.route("/PrivateMessage", methods=["POST", "GET"])
 def submit3():
