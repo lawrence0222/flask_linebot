@@ -49,7 +49,7 @@ def user_info():
     c.execute("SELECT USER_ID,USER_NAME FROM PEOPLE")
     #conn.commit()
     res = c.fetchall()
-    
+
     conn.close()
     return  res
 
@@ -62,7 +62,7 @@ def update_msg(user_id,text):
     conn.commit()
     conn.close()
 
-
+    
 
 
 def group_msg(label,text):

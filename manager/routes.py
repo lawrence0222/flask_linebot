@@ -46,20 +46,21 @@ def submit2():
     group_msg(group,request.form["text"])
     return render_template("manager.html",user_info= user_info())
 
-@manager.route("/GroupMail/iden", methods=["POST", "GET"])
-def iden():
-    request_list = list(request.form.keys())
-    group = []
-    for i in request_list:
-        if i != "text":
-            group.append(i)
-    user_all = user_info()
-    id_list = id_in_group(group)
-    for id in user_all[0]:
-        if id in id_list:
-            user_all.remove(id)
+# @manager.route("/GroupMail/iden", methods=["POST", "GET"])
+# def iden():
+#     request_list = list(request.form.keys())
+#     group = []
+#     for i in request_list:
+#         if i != "text":
+#             group.append(i)
+#     id_list = id_in_group(group)
 
-    return render_template("manager.html",user_info= user_all)
+
+#     user_all = user_info()
+#     for id in user_all[0]:
+#         if id in id_list:
+#             user_all.remove(id)
+#     return render_template("manager.html",user_info= user_all)
 
 
 
