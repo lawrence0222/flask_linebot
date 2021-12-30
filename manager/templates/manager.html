@@ -66,6 +66,12 @@
                     <label><input type="checkbox" name="worker" value="worker" >上班族群</label>
                     <label><input type="checkbox" name="cooker" value="cooker" >家庭主婦</label>
                 </div>
+                <div>
+                    {% for user in user_info %}
+                        {{ user_info[1] }}
+                    {% endfor %}
+                </div>
+
                 <input type="submit" value="確定" onclick="">
             </form>
         </div>
