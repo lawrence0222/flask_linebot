@@ -44,11 +44,22 @@ def submit2():
     for i in user_list:
         line_bot_api.push_message(i[0], TextSendMessage(text=request.form["text"]))
     group_msg(group,request.form["text"])
-    return render_template("manager.html",user_info= user_info(),user_list = user_list)
+    return render_template("manager.html",user_info= user_info())
 
 @manager.route("/GroupMail/iden", methods=["POST", "GET"])
 def iden():
-    return render_template("line_login.html")
+    request_list = list(request.form.keys())
+    group = []
+    for i in request_list:
+        if i != "text":
+            group.append(i)
+    user_all = user_info()
+    id_list = id_in_group(group)
+    for id in user_all[0]:
+        if id in id_list:
+            user_all.remove(id)
+
+    return render_template("manager.html",user_info= user_all)
 
 
 
